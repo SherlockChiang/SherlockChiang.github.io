@@ -271,6 +271,15 @@
     // ============================================================
     const OSS_PROJECTS = [
       {
+        repo: 'SherlockChiang/Nethunter_for_KernelSU',
+        name: 'Nethunter_for_KernelSU',
+        abbr: 'NH',
+        color: 'sky',
+        lang: 'Shell',
+        descZh: '适配KernelSU的Nethunter安装脚本',
+        descEn: 'A Shell script for installing Nethunter on KernelSU.'
+      },
+      {
         repo: 'SherlockChiang/Maodie-Launcher',
         name: 'Maodie Launcher',
         abbr: 'ML',
@@ -282,21 +291,13 @@
       {
         repo: 'SherlockChiang/Bili_Video_History_Record',
         name: 'Bili_Video_History_Record',
-        abbr: 'CY',
+        abbr: 'BV',
         color: 'emerald',
         lang: 'Python',
         descZh: '专为 Bilibili 视频观看记录提取设计的 Python 爬虫。',
         descEn: 'A Python crawler designed for extracting Bilibili video watch history.'
       },
-      {
-        repo: 'SherlockChiang/Nethunter_for_KernelSU',
-        name: 'Nethunter_for_KernelSU',
-        abbr: 'PN',
-        color: 'sky',
-        lang: 'Shell',
-        descZh: '适配KernelSU的Nethunter安装脚本',
-        descEn: 'A Shell script for installing Nethunter on KernelSU.'
-      },
+      
     ];
 
     const OSS_AUTO_MS = 5000;
@@ -447,10 +448,10 @@
           }
         } catch (_) {}
         try {
-          const res = await fetch(`https://api.github.com/repos/${repo}`);
+          const res = await fetch(`https://img.shields.io/github/stars/${repo}.json`);
           if (!res.ok) throw new Error('HTTP ' + res.status);
           const data = await res.json();
-          const count = data.stargazers_count ?? 0;
+          const count = parseInt(String(data.value ?? data.message ?? '0').replace(/[^\d]/g, ''), 10) || 0;
           try { localStorage.setItem(cacheKey, JSON.stringify({ count, ts: Date.now() })); } catch (_) {}
           out.textContent = fmt(count);
           el.dataset.starLoaded = '1';
