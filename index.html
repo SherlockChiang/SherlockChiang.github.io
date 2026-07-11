@@ -1,479 +1,848 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chiang Yuhan - Academic & Developer Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'media', 
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              light: '#0ea5e9',
-              dark: '#38bdf8'  
-            },
-            slate: {
-              950: '#020617',
-              900: '#0f172a',
-            }
-          },
-          aspectRatio: {
-            '3/1': '3 / 1',
-          }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chiang Yuhan - Academic &amp; Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Chiang Yuhan's portfolio in cognitive neuroscience, multimodal physiological data analysis, machine learning, and open-source software."
+    />
+    <link rel="canonical" href="https://sherlockchiang.github.io/" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://sherlockchiang.github.io/" />
+    <meta
+      property="og:title"
+      content="Chiang Yuhan - Academic & Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Research in cognitive neuroscience and multimodal physiological data, with open-source software engineering."
+    />
+    <meta
+      property="og:image"
+      content="https://avatars.githubusercontent.com/u/98642231?v=4"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Chiang Yuhan - Academic & Developer Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Research in cognitive neuroscience and multimodal physiological data, with open-source software engineering."
+    />
+    <meta
+      name="twitter:image"
+      content="https://avatars.githubusercontent.com/u/98642231?v=4"
+    />
+    <meta
+      name="theme-color"
+      content="#0f172a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#f9fafb"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/98642231?v=4"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://avatars.githubusercontent.com/u/98642231?v=4"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Chiang Yuhan",
+        "url": "https://sherlockchiang.github.io/",
+        "image": "https://avatars.githubusercontent.com/u/98642231?v=4",
+        "email": "mailto:sherlockchiang@gmail.com",
+        "sameAs": ["https://github.com/SherlockChiang"],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Beijing Normal University"
+        },
+        "knowsAbout": [
+          "Cognitive neuroscience",
+          "EEG",
+          "Eye tracking",
+          "Machine learning",
+          "Open-source software"
+        ]
+      }
+    </script>
+    <style>
+      /* 多语言控制核心逻辑 */
+      html[lang="en"] .zh {
+        display: none !important;
+      }
+      html:not([lang="en"]) .en {
+        display: none !important;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
         }
       }
-    }
-  </script>
-  <style>
-    /* 多语言控制核心逻辑 */
-    html[lang="en"] .zh { display: none !important; }
-    html:not([lang="en"]) .en { display: none !important; }
-
-    /* 开源项目轮播 */
-    .oss-viewport { overflow: hidden; }
-    .oss-track {
-      display: flex;
-      gap: 1.5rem;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform;
-    }
-    /* 卡片宽度由 JS 按视口精确计算，避免百分比舍入造成的不等宽 / 溢出 */
-    .oss-card { flex: 0 0 auto; box-sizing: border-box; }
-    .oss-dot {
-      width: 0.5rem; height: 0.5rem; border-radius: 9999px;
-      transition: all 0.3s ease;
-    }
-    .oss-dot-active { width: 1.5rem; }
-  </style>
-</head>
-<body class="bg-gray-50 dark:bg-slate-950 text-gray-700 dark:text-gray-300 font-sans antialiased leading-relaxed transition-colors duration-300 relative">
-
-  <button onclick="toggleLanguage()" class="absolute top-4 right-6 md:top-8 md:right-10 px-4 py-2 rounded-full bg-white dark:bg-slate-900 shadow-sm border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors z-10">
-    <span class="zh">🌐 English</span>
-    <span class="en">🌐 中文</span>
-  </button>
-
-  <main class="max-w-6xl mx-auto px-6 py-12 md:py-20">
-
-    <header class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 p-8 mb-10 flex flex-col sm:flex-row items-center sm:items-start gap-8 transition-shadow hover:shadow-md">
-      <img src="https://avatars.githubusercontent.com/u/98642231?v=4" alt="Chiang Yuhan Profile" class="w-32 h-32 rounded-full object-cover border-4 border-gray-50 dark:border-slate-800 shrink-0">
-      
-      <div class="text-center sm:text-left">
-        <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">Chiang Yuhan</h1>
-        <p class="zh text-xl text-primary-light dark:text-primary-dark font-medium mb-4">学徒 | 工程师而不是开发者</p>
-        <p class="en text-xl text-primary-light dark:text-primary-dark font-medium mb-4">Apprentice | Engineer, not just a Developer</p>        
-        <p class="zh text-gray-500 dark:text-gray-400 mb-6 max-w-3xl text-sm md:text-base">
-          专注于大脑基础机制研究，擅长结合 AI 辅助计算建模与多模态生理数据（EEG、眼动、PSG）分析。同时致力于开发提升效率与体验的开源工具。
-        </p>
-        <p class="en text-gray-500 dark:text-gray-400 mb-6 max-w-3xl text-sm md:text-base">
-          Focusing on fundamental brain mechanisms, specializing in AI-assisted computational modeling and multimodal physiological data (EEG, Eye-tracking, PSG) analysis. Also dedicated to developing open-source tools that enhance efficiency and user experience.
-        </p>
-        
-        <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm font-semibold">
-          <a href="mailto:sherlockchiang@gmail.com" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors">
-            📧 Email
-          </a>
-          <a href="https://github.com/SherlockChiang" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors">
-            💻 GitHub
-          </a>
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-slate-950 text-gray-700 dark:text-gray-300 font-sans antialiased leading-relaxed transition-colors duration-300 relative"
+  >
+    <main class="max-w-6xl mx-auto px-6 py-8 md:py-16">
+      <nav
+        aria-label="Primary navigation"
+        class="flex flex-wrap items-center justify-between gap-4 mb-8 text-sm"
+      >
+        <div
+          class="flex flex-wrap gap-x-5 gap-y-2 font-medium text-gray-600 dark:text-gray-300"
+        >
+          <a
+            href="#projects"
+            class="hover:text-primary-light dark:hover:text-primary-dark"
+            ><span class="zh">科研</span><span class="en">Research</span></a
+          >
+          <a
+            href="#publications"
+            class="hover:text-primary-light dark:hover:text-primary-dark"
+            ><span class="zh">论文</span><span class="en">Publications</span></a
+          >
+          <a
+            href="#oss-products"
+            class="hover:text-primary-light dark:hover:text-primary-dark"
+            ><span class="zh">软件</span><span class="en">Software</span></a
+          >
+          <a
+            href="#timeline"
+            class="hover:text-primary-light dark:hover:text-primary-dark"
+            ><span class="zh">经历</span><span class="en">Experience</span></a
+          >
         </div>
-      </div>
-    </header>
+        <button
+          type="button"
+          onclick="toggleLanguage()"
+          class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:text-primary-light dark:hover:text-primary-dark transition-colors"
+          aria-label="Switch language"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path
+              d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"
+            />
+          </svg>
+          <span class="zh">English</span><span class="en">中文</span>
+        </button>
+      </nav>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      
-      <div class="md:col-span-2 space-y-12">
+      <header
+        class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 p-8 mb-10 flex flex-col sm:flex-row items-center sm:items-start gap-8 transition-shadow hover:shadow-md"
+      >
+        <img
+          src="https://avatars.githubusercontent.com/u/98642231?v=4"
+          alt="Portrait of Chiang Yuhan"
+          width="128"
+          height="128"
+          decoding="async"
+          class="w-32 h-32 rounded-full object-cover border-4 border-gray-50 dark:border-slate-800 shrink-0"
+        />
 
-        <section id="oss-products">
-          <h2 class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">开源项目</h2>
-          <h2 class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">Featured Projects</h2>
-          
-          <article class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-xl hover:border-primary-light/20 dark:hover:border-primary-dark/20 transition-all duration-300 group overflow-hidden mb-8">
-            <img src="https://raw.githubusercontent.com/SherlockChiang/Task-Flyout/refs/heads/master/docs/poster.png" alt="Task Flyout Poster" class="w-full aspect-[3/1] object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="p-8 flex-grow flex flex-col">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-primary-light dark:text-primary-dark text-xl font-bold shrink-0">TF</div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-gray-100">Task Flyout</h3>
+        <div class="text-center sm:text-left">
+          <h1
+            class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2"
+          >
+            Chiang Yuhan
+          </h1>
+          <p
+            class="zh text-xl text-primary-light dark:text-primary-dark font-medium mb-4"
+          >
+            学徒 | 工程师而不是开发者
+          </p>
+          <p
+            class="en text-xl text-primary-light dark:text-primary-dark font-medium mb-4"
+          >
+            Apprentice | Engineer, not a Developer
+          </p>
+          <p
+            class="zh text-gray-500 dark:text-gray-400 mb-6 max-w-3xl text-sm md:text-base"
+          >
+            专注于大脑基础机制研究，擅长结合 AI
+            辅助计算建模与多模态生理数据（EEG、眼动、PSG）分析。同时致力于开发提升效率与体验的开源工具。
+          </p>
+          <p
+            class="en text-gray-500 dark:text-gray-400 mb-6 max-w-3xl text-sm md:text-base"
+          >
+            Researching cognition and emotion through machine-learning-based
+            modeling and multimodal physiological data analysis, including EEG,
+            eye tracking, and PSG. I also build open-source tools that improve
+            everyday workflows.
+          </p>
+
+          <div
+            class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm font-semibold"
+          >
+            <a
+              href="mailto:sherlockchiang@gmail.com"
+              class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m4 7 8 6 8-6" /></svg
+              >Email
+            </a>
+            <a
+              href="https://github.com/SherlockChiang"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 .7a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.2 1.2a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A11.5 11.5 0 0 0 12 .7Z"
+                /></svg
+              >GitHub
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="md:col-span-2 space-y-12">
+          <section id="oss-products">
+            <h2
+              class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              开源项目
+            </h2>
+            <h2
+              class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              Featured Projects
+            </h2>
+
+            <article
+              class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-xl hover:border-primary-light/20 dark:hover:border-primary-dark/20 transition-all duration-300 group overflow-hidden mb-8"
+            >
+              <img
+                src="https://raw.githubusercontent.com/SherlockChiang/Task-Flyout/refs/heads/master/docs/poster.png"
+                alt="Task Flyout application preview"
+                width="1200"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                onerror="this.hidden = true"
+                class="w-full aspect-[3/1] object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="p-8 flex-grow flex flex-col">
+                <div class="flex items-center gap-4 mb-4">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-primary-light dark:text-primary-dark text-xl font-bold shrink-0"
+                  >
+                    TF
+                  </div>
+                  <h3
+                    class="text-2xl font-bold text-slate-900 dark:text-gray-100"
+                  >
+                    Task Flyout
+                  </h3>
+                </div>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                >
+                  面向 Windows 的原生任务管理客户端，整合 Google Tasks 与
+                  Microsoft To Do，并提供跨服务同步和系统级集成。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                >
+                  Built a native Windows task-management client integrating
+                  Google Tasks and Microsoft To Do, with cross-service
+                  synchronization and native system integration.
+                </p>
+
+                <div
+                  class="flex flex-wrap gap-x-4 gap-y-2 mb-5 text-xs font-medium text-gray-500 dark:text-gray-400"
+                >
+                  <span class="inline-flex items-center gap-1.5"
+                    ><svg
+                      aria-hidden="true"
+                      class="w-4 h-4 text-amber-500"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="m12 2 2.8 6.6 7.2.6-5.5 4.7 1.7 7.1-6.2-3.7L5.8 21l1.7-7.1L2 9.2l7.2-.6L12 2Z"
+                      /></svg
+                    >2 Stars</span
+                  >
+                  <span>v1.2.11 Release</span>
+                  <span>Windows x64</span>
+                </div>
+
+                <div
+                  class="flex flex-wrap justify-between items-center gap-3 mt-auto pt-2"
+                >
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span
+                      class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded"
+                      >C#</span
+                    >
+                  </div>
+                  <a
+                    href="https://github.com/SherlockChiang/Task-Flyout"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-light dark:text-primary-dark font-semibold group-hover:underline"
+                    >GitHub →</a
+                  >
+                </div>
               </div>
-              <p class="zh text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow">
-                一款现代化的 Google/Microsoft 任务管理辅助工具，优化多平台任务流同步体验。
-              </p>
-              <p class="en text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow">
-                A modern task management assistant tool for Google/Microsoft, optimizing cross-platform task synchronization.
-              </p>
-              
-              <div class="flex justify-between items-center mt-auto pt-2">
-                <div class="flex items-center gap-2">
-                  <span class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded">C#</span>
-                  <a href="https://github.com/SherlockChiang/Task-Flyout/stargazers" target="_blank" class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-slate-800 text-xs font-semibold rounded hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" data-repo="SherlockChiang/Task-Flyout" title="GitHub Stars">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <span class="star-count text-gray-700 dark:text-gray-300">—</span>
+            </article>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+              <article
+                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col"
+              >
+                <h3
+                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  Nethunter for KernelSU
+                </h3>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  为 KernelSU 环境适配 Kali NetHunter 安装流程，处理 Android
+                  Root 环境下的安装与兼容性问题。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  Adapted the Kali NetHunter installation workflow for KernelSU,
+                  addressing installation and compatibility in rooted Android
+                  environments.
+                </p>
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 text-xs"
+                >
+                  <span class="text-gray-500 dark:text-gray-400"
+                    >Shell · 46 Stars · 7 Forks</span
+                  >
+                  <a
+                    href="https://github.com/SherlockChiang/Nethunter_for_KernelSU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    >GitHub →</a
+                  >
+                </div>
+              </article>
+              <article
+                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col"
+              >
+                <h3
+                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  Maodie Launcher
+                </h3>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  面向 Magisk 与 KernelSU 的轻量级 mihomo 系统 TUN 模块，实现
+                  Android 系统级透明代理。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  Built a lightweight mihomo system-TUN module for Magisk and
+                  KernelSU, providing system-wide transparent proxying on
+                  Android.
+                </p>
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 text-xs"
+                >
+                  <span class="text-gray-500 dark:text-gray-400"
+                    >Shell · 7 Stars · 1 Fork</span
+                  >
+                  <a
+                    href="https://github.com/SherlockChiang/Maodie-Launcher"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    >GitHub →</a
+                  >
+                </div>
+              </article>
+              <article
+                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col sm:col-span-2"
+              >
+                <h3
+                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  Bili Video History Record
+                </h3>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  为科研数据采集开发的 Python 工具，用于提取并整理研究参与者的
+                  Bilibili 视频浏览记录与标签。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                >
+                  Developed a Python research utility to extract and organize
+                  participants' Bilibili viewing histories and video tags.
+                </p>
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 text-xs"
+                >
+                  <span class="text-gray-500 dark:text-gray-400"
+                    >Python · 2 Stars</span
+                  >
+                  <a
+                    href="https://github.com/SherlockChiang/Bili_Video_History_Record"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    >GitHub →</a
+                  >
+                </div>
+              </article>
+            </div>
+            <p class="zh mt-5 text-xs text-gray-500 dark:text-gray-400">
+              公开 GitHub 指标核验于 2026 年 7 月 11 日。
+            </p>
+            <p class="en mt-5 text-xs text-gray-500 dark:text-gray-400">
+              Public GitHub metrics verified on July 11, 2026.
+            </p>
+          </section>
+
+          <section id="projects">
+            <h2
+              class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              科研项目
+            </h2>
+            <h2
+              class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              Research Projects
+            </h2>
+
+            <div class="space-y-6">
+              <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-800 hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-colors"
+              >
+                <h3
+                  class="zh text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  基于机器学习的情绪预测研究
+                </h3>
+                <h3
+                  class="en text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  Machine Learning-Based Emotion Prediction
+                </h3>
+                <p
+                  class="zh text-sm text-primary-light dark:text-primary-dark font-medium mb-3"
+                >
+                  中科院深海科学与工程研究所 | 参与者
+                </p>
+                <p
+                  class="en text-sm text-primary-light dark:text-primary-dark font-medium mb-3"
+                >
+                  Institute of Deep-sea Science and Engineering, CAS |
+                  Participant
+                </p>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  结合脑电 (EEG)、眼动和多导睡眠监测 (PSG)
+                  数据，构建机器学习模型以预测情绪状态。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  Utilizing EEG, eye-tracking, and polysomnography (PSG) data to
+                  build machine learning models for emotion prediction.
+                </p>
+
+                <div
+                  class="flex justify-start items-center mt-auto border-t border-gray-100 dark:border-slate-800 pt-4"
+                >
+                  <div
+                    class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5 cursor-default italic"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 opacity-80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
+                    <span class="zh">出于项目要求，具体内容暂时保密</span>
+                    <span class="en"
+                      >Details are confidential due to project
+                      requirements</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300 group"
+              >
+                <h3
+                  class="zh text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  耳机舒适度多模态生理研究
+                </h3>
+                <h3
+                  class="en text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
+                >
+                  Headphone Comfort Research
+                </h3>
+
+                <p
+                  class="zh text-sm text-primary-light dark:text-primary-dark font-medium mb-3"
+                >
+                  歌尔股份有限公司 (GoerTek Inc.) | 参与者
+                </p>
+                <p
+                  class="en text-sm text-primary-light dark:text-primary-dark font-medium mb-3"
+                >
+                  GoerTek Inc. Research Project | Participant
+                </p>
+
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5 flex-grow"
+                >
+                  使用脑电 (EEG)、眼动与生理多导监测设备 (PSG)
+                  收集数据，分析评估穿戴设备的舒适度指标。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5 flex-grow"
+                >
+                  Collecting multimodal data using EEG, eye-tracking, and PSG to
+                  evaluate and analyze the comfort metrics of wearable devices.
+                </p>
+
+                <div
+                  class="flex justify-start items-center mt-auto border-t border-gray-100 dark:border-slate-800 pt-4"
+                >
+                  <a
+                    href="https://thinktocode.online/static/Tasks/%E4%BA%BA%E5%9B%A0%E4%B8%8E%E7%94%A8%E6%88%B7%E7%A0%94%E7%A9%B6/%E6%AD%8C%E5%B0%94%E5%85%AC%E5%8F%B8%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%A8%A1%E6%80%81%E7%94%9F%E7%90%86%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%80%B3%E6%9C%BA%E8%88%92%E9%80%82%E5%BA%A6%E7%A0%94%E7%A9%B6--%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm text-primary-light dark:text-primary-dark font-semibold group-hover:underline flex items-center gap-1"
+                  >
+                    <span class="zh">查看项目详情 (合作者主页) →</span>
+                    <span class="en">View Details (Collaborator's Page) →</span>
                   </a>
                 </div>
-                <a href="https://github.com/SherlockChiang/Task-Flyout" target="_blank" class="text-primary-light dark:text-primary-dark font-semibold group-hover:underline">GitHub →</a>
               </div>
             </div>
-          </article>
+          </section>
 
-          <div id="oss-carousel" class="relative">
-            <div class="oss-viewport">
-              <div id="oss-track" class="oss-track"></div>
-            </div>
+          <section id="publications">
+            <h2
+              class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              发表论文
+            </h2>
+            <h2
+              class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block"
+            >
+              Publications
+            </h2>
 
-            <div class="flex items-center justify-center gap-3 mt-5">
-              <button id="oss-prev" type="button" aria-label="Previous" class="w-9 h-9 rounded-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark hover:border-primary-light/50 dark:hover:border-primary-dark/50 transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-              </button>
-              <div id="oss-dots" class="flex items-center gap-2"></div>
-              <button id="oss-next" type="button" aria-label="Next" class="w-9 h-9 rounded-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark hover:border-primary-light/50 dark:hover:border-primary-dark/50 transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+            <ul class="space-y-4 text-sm">
+              <li
+                class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800 transition-colors hover:border-gray-200 dark:hover:border-slate-700"
+              >
+                <p
+                  class="text-gray-800 dark:text-gray-200 leading-relaxed text-base"
+                >
+                  <span class="zh">Liqin Zhou, Yujie Liu, </span>
+                  <span class="en">Liqin Zhou, Yujie Liu, </span>
+                  <strong class="text-primary-light dark:text-primary-dark"
+                    >Yuhan Jiang</strong
+                  >. (2024).
+                  <span class="font-medium text-slate-900 dark:text-white"
+                    >The Distinct Development of Stimulus and Response Serial
+                    Dependence</span
+                  >.
+                  <span class="italic text-gray-500 dark:text-gray-400"
+                    >Psychonomic Bulletin &amp; Review</span
+                  >.
+                </p>
+              </li>
+            </ul>
+          </section>
+        </div>
 
-          <!-- Tailwind JIT 安全列表：确保动态注入的颜色类被识别 -->
-          <div class="hidden bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400"></div>
-        </section>
-        
-        <section id="projects">
-          <h2 class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">科研项目</h2>
-          <h2 class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">Research Projects</h2>
-          
-          <div class="space-y-6">
-            <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-800 hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-colors">
-              <h3 class="zh text-lg font-bold text-slate-800 dark:text-gray-100 mb-2">基于机器学习的情绪预测研究</h3>
-              <h3 class="en text-lg font-bold text-slate-800 dark:text-gray-100 mb-2">Machine Learning-Based Emotion Prediction</h3>
-              <p class="zh text-sm text-primary-light dark:text-primary-dark font-medium mb-3">中科院深海科学与工程研究所 | 参与者</p>
-              <p class="en text-sm text-primary-light dark:text-primary-dark font-medium mb-3">Institute of Deep-sea Science and Engineering, CAS | Participant</p>
-              <p class="zh text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                结合脑电 (EEG)、眼动和多导睡眠监测 (PSG) 数据，构建机器学习模型以预测情绪状态。
+        <div class="space-y-12">
+          <section id="skills">
+            <h2
+              class="zh text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-primary-light dark:text-primary-dark"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+              >
+                <path d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" /></svg
+              >技术栈与工具
+            </h2>
+            <h2
+              class="en text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-primary-light dark:text-primary-dark"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+              >
+                <path d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" /></svg
+              >Skills &amp; Tools
+            </h2>
+            <div class="border-t border-gray-200 dark:border-slate-800 pt-5">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900"
+                  >Python (Data Science)</span
+                >
+                <span
+                  class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900"
+                  >MATLAB (Eyetracking)</span
+                >
+                <span
+                  class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900"
+                  >Linux Ops</span
+                >
+                <span
+                  class="px-3 py-1.5 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded-lg border border-gray-200 dark:border-slate-700"
+                  >Android Dev</span
+                >
+              </div>
+              <p
+                class="zh text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                热爱编程，享受使用工具解决复杂问题的过程。
               </p>
-              <p class="en text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Utilizing EEG, eye-tracking, and polysomnography (PSG) data to build machine learning models for emotion prediction.
+              <p
+                class="en text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                Passionate about coding, enjoying the process of solving complex
+                problems with tools.
               </p>
+            </div>
+          </section>
 
-              <div class="flex justify-start items-center mt-auto border-t border-gray-100 dark:border-slate-800 pt-4">
-                <div class="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-1.5 cursor-default italic">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  <span class="zh">出于项目要求，具体内容暂时保密</span>
-                  <span class="en">Details are confidential due to project requirements</span>
-                </div>
+          <section id="timeline">
+            <h2
+              class="zh text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-primary-light dark:text-primary-dark"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" /></svg
+              >经历与教育
+            </h2>
+            <h2
+              class="en text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-primary-light dark:text-primary-dark"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" /></svg
+              >Timeline
+            </h2>
+
+            <div
+              class="border-l-2 border-gray-200 dark:border-slate-800 pl-4 space-y-8 mt-2"
+            >
+              <div class="relative">
+                <div
+                  class="absolute w-3 h-3 bg-gray-300 dark:bg-slate-700 rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"
+                ></div>
+                <h3 class="zh font-bold text-slate-800 dark:text-gray-100">
+                  心理学 - 学士
+                </h3>
+                <h3 class="en font-bold text-slate-800 dark:text-gray-100">
+                  Psychology - B.S.
+                </h3>
+                <p
+                  class="zh text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  北京师范大学心理学部
+                </p>
+                <p
+                  class="en text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  Faculty of Psychology, BNU
+                </p>
+                <p
+                  class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono"
+                >
+                  2021.9 - 2025.6
+                </p>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="absolute w-3 h-3 bg-primary-light dark:bg-primary-dark rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"
+                ></div>
+                <h3 class="zh font-bold text-slate-800 dark:text-gray-100">
+                  研究助理 (RA)
+                </h3>
+                <h3 class="en font-bold text-slate-800 dark:text-gray-100">
+                  Research Assistant
+                </h3>
+                <p
+                  class="zh text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  北京师范大学
+                </p>
+                <p
+                  class="en text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  Jiang Ting Lab, BNU
+                </p>
+                <p
+                  class="zh text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed"
+                >
+                  负责脑电与眼动设备编程，并针对神经网络项目进行数据分析。
+                </p>
+                <p
+                  class="en text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed"
+                >
+                  Developed experimental programs for EEG and eye-tracking
+                  studies and built data-analysis pipelines for neural-network
+                  research.
+                </p>
+                <p
+                  class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono"
+                >
+                  2025.6 - 2026.6
+                </p>
               </div>
             </div>
-
-            <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300 group">
-              <h3 class="zh text-lg font-bold text-slate-800 dark:text-gray-100 mb-2">耳机舒适度多模态生理研究</h3>
-              <h3 class="en text-lg font-bold text-slate-800 dark:text-gray-100 mb-2">Headphone Comfort Research</h3>
-              
-              <p class="zh text-sm text-primary-light dark:text-primary-dark font-medium mb-3">歌尔股份有限公司 (GoerTek Inc.) | 参与者</p>
-              <p class="en text-sm text-primary-light dark:text-primary-dark font-medium mb-3">GoerTek Inc. Research Project | Participant</p>
-              
-              <p class="zh text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5 flex-grow">
-                使用脑电 (EEG)、眼动与生理多导监测设备 (PSG) 收集数据，分析评估穿戴设备的舒适度指标。
-              </p>
-              <p class="en text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5 flex-grow">
-                Collecting multimodal data using EEG, eye-tracking, and PSG to evaluate and analyze the comfort metrics of wearable devices.
-              </p>
-              
-              <div class="flex justify-start items-center mt-auto border-t border-gray-100 dark:border-slate-800 pt-4">
-                <a href="https://thinktocode.online/static/Tasks/%E4%BA%BA%E5%9B%A0%E4%B8%8E%E7%94%A8%E6%88%B7%E7%A0%94%E7%A9%B6/%E6%AD%8C%E5%B0%94%E5%85%AC%E5%8F%B8%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%A8%A1%E6%80%81%E7%94%9F%E7%90%86%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%80%B3%E6%9C%BA%E8%88%92%E9%80%82%E5%BA%A6%E7%A0%94%E7%A9%B6--%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html" target="_blank" class="text-sm text-primary-light dark:text-primary-dark font-semibold group-hover:underline flex items-center gap-1">
-                  <span class="zh">查看项目详情 (合作者主页) →</span>
-                  <span class="en">View Details (Collaborator's Page) →</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="publications">
-          <h2 class="zh text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">发表论文</h2>
-          <h2 class="en text-2xl font-bold text-slate-900 dark:text-white border-b-2 border-primary-light dark:border-primary-dark pb-2 mb-8 inline-block">Publications</h2>
-          
-          <ul class="space-y-4 text-sm">
-            <li class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800 transition-colors hover:border-gray-200 dark:hover:border-slate-700">
-              <p class="text-gray-800 dark:text-gray-200 leading-relaxed text-base">
-                <span class="zh">Liqin Zhou, Yujie Liu, </span>
-                <span class="en">Liqin Zhou, Yujie Liu, </span>
-                <strong class="text-primary-light dark:text-primary-dark">Yuhan Jiang</strong>. (2024). 
-                <span class="font-medium text-slate-900 dark:text-white">The Distinct Development of Stimulus and Response Serial Dependence</span>. 
-                <span class="italic text-gray-500 dark:text-gray-400">Psychonomic Bulletin & Review</span>.
-              </p>
-            </li>
-          </ul>
-        </section>
-
+          </section>
+        </div>
       </div>
 
-      <div class="space-y-12">
-        
-        <section id="skills">
-          <h2 class="zh text-xl font-bold text-slate-900 dark:text-white mb-6">💻 技术栈与工具</h2>
-          <h2 class="en text-xl font-bold text-slate-900 dark:text-white mb-6">💻 Skills & Tools</h2>
-          <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800">
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900">Python (Data Science)</span>
-              <span class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900">MATLAB (Eyetracking)</span>
-              <span class="px-3 py-1.5 bg-blue-50 dark:bg-sky-950 text-primary-light dark:text-primary-dark text-xs font-semibold rounded-lg border border-blue-100 dark:border-sky-900">Linux Ops</span>
-              <span class="px-3 py-1.5 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded-lg border border-gray-200 dark:border-slate-700">Android Dev</span>
-            </div>
-            <p class="zh text-xs text-gray-500 dark:text-gray-400 leading-relaxed">热爱编程，享受使用工具解决复杂问题的过程。</p>
-            <p class="en text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Passionate about coding, enjoying the process of solving complex problems with tools.</p>
-          </div>
-        </section>
+      <footer
+        class="mt-20 pt-10 border-t border-gray-100 dark:border-slate-800 text-center text-gray-500 dark:text-gray-400 text-sm"
+      >
+        <p>&copy; 2026 Chiang Yuhan.</p>
+      </footer>
+    </main>
 
-        <section id="timeline">
-          <h2 class="zh text-xl font-bold text-slate-900 dark:text-white mb-6">⏳ 经历与教育</h2>
-          <h2 class="en text-xl font-bold text-slate-900 dark:text-white mb-6">⏳ Timeline</h2>
-          
-          <div class="border-l-2 border-gray-200 dark:border-slate-800 pl-4 space-y-8 mt-2">
+    <script>
+      const PAGE_META = {
+        "zh-CN": {
+          title: "Chiang Yuhan - 科研与开发者作品集",
+          description:
+            "Chiang Yuhan 的个人作品集，关注认知神经科学、多模态生理数据分析、机器学习与开源软件。",
+        },
+        en: {
+          title: "Chiang Yuhan - Academic & Developer Portfolio",
+          description:
+            "Chiang Yuhan's portfolio in cognitive neuroscience, multimodal physiological data analysis, machine learning, and open-source software.",
+        },
+      };
 
-            <div class="relative">
-              <div class="absolute w-3 h-3 bg-gray-300 dark:bg-slate-700 rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"></div>
-              <h3 class="zh font-bold text-slate-800 dark:text-gray-100">心理学 - 学士</h3>
-              <h3 class="en font-bold text-slate-800 dark:text-gray-100">Psychology - B.S.</h3>
-              <p class="zh text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">北京师范大学心理学部</p>
-              <p class="en text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Faculty of Psychology, BNU</p>
-              <p class="text-xs text-gray-400 dark:text-gray-500 mt-2 font-mono">2021.9 - 2025.6</p>
-            </div>
-            
-            <div class="relative">
-              <div class="absolute w-3 h-3 bg-primary-light dark:bg-primary-dark rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"></div>
-              <h3 class="zh font-bold text-slate-800 dark:text-gray-100">研究助理 (RA)</h3>
-              <h3 class="en font-bold text-slate-800 dark:text-gray-100">Research Assistant</h3>
-              <p class="zh text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">北京师范大学</p>
-              <p class="en text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Jiang Ting Lab, BNU</p>
-              <p class="zh text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">负责脑电与眼动设备编程，并针对神经网络项目进行数据分析。</p>
-              <p class="en text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Programming for EEG and eye-tracking equipment and conducting data analysis for neural network programs.</p>
-              <p class="text-xs text-gray-400 dark:text-gray-500 mt-2 font-mono">2025.6 - 2026.6</p>
-            </div>
-            
-          </div>
-        </section>
-        
-      </div>
-    </div>
-    
-    <footer class="mt-20 pt-10 border-t border-gray-100 dark:border-slate-800 text-center text-gray-400 dark:text-gray-600 text-sm">
-      <p>&copy; 2026 Chiang. Auto Dark Mode & System Language Detection.</p>
-    </footer>
-
-  </main>
-
-  <script>
-    // ============================================================
-    // 开源项目列表 —— 要添加新项目，只需在数组里复制粘贴一条即可
-    // 可选颜色: amber / emerald / sky / rose / violet
-    // ============================================================
-    const OSS_PROJECTS = [
-      {
-        repo: 'SherlockChiang/Nethunter_for_KernelSU',
-        name: 'Nethunter_for_KernelSU',
-        abbr: 'NH',
-        color: 'sky',
-        lang: 'Shell',
-        descZh: '适配KernelSU的Nethunter安装脚本',
-        descEn: 'A Shell script for installing Nethunter on KernelSU.'
-      },
-      {
-        repo: 'SherlockChiang/Maodie-Launcher',
-        name: 'Maodie Launcher',
-        abbr: 'ML',
-        color: 'amber',
-        lang: 'Shell',
-        descZh: '专注于系统 TUN 的 mihomo 透明代理 ksu 模块。提供稳定、轻量化的系统级代理能力。',
-        descEn: 'A mihomo transparent proxy KernelSU module focusing on system TUN. Provides stable, lightweight system-level proxy.'
-      },
-      {
-        repo: 'SherlockChiang/Bili_Video_History_Record',
-        name: 'Bili_Video_History_Record',
-        abbr: 'BV',
-        color: 'emerald',
-        lang: 'Python',
-        descZh: '专为 Bilibili 视频观看记录提取设计的 Python 爬虫。',
-        descEn: 'A Python crawler designed for extracting Bilibili video watch history.'
-      },
-      
-    ];
-
-    const OSS_AUTO_MS = 5000;
-
-    const OSS_COLOR = {
-      amber:   'bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400',
-      emerald: 'bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400',
-      sky:     'bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400',
-      rose:    'bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400',
-      violet:  'bg-violet-100 dark:bg-violet-950 text-violet-600 dark:text-violet-400',
-    };
-
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
-
-    function renderOssCard(p) {
-      const iconCls = OSS_COLOR[p.color] || OSS_COLOR.sky;
-      const repo = escapeHtml(p.repo);
-      return `<article class="oss-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300 group">
-        <div class="flex items-center justify-between gap-3 mb-4">
-          <div class="flex items-center gap-3 min-w-0">
-            <div class="w-10 h-10 rounded-lg ${iconCls} flex items-center justify-center text-lg font-bold shrink-0">${escapeHtml(p.abbr)}</div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100 truncate">${escapeHtml(p.name)}</h3>
-          </div>
-          <a href="https://github.com/${repo}/stargazers" target="_blank" class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-slate-800 text-xs font-semibold rounded hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors shrink-0" data-repo="${repo}" title="GitHub Stars">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <span class="star-count text-gray-700 dark:text-gray-300">—</span>
-          </a>
-        </div>
-        <p class="zh text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow">${escapeHtml(p.descZh)}</p>
-        <p class="en text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow">${escapeHtml(p.descEn)}</p>
-        <div class="flex justify-between items-center mt-auto border-t border-gray-100 dark:border-slate-800 pt-4">
-          <span class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded">${escapeHtml(p.lang)}</span>
-          <a href="https://github.com/${repo}" target="_blank" class="text-sm text-primary-light dark:text-primary-dark font-semibold group-hover:underline">GitHub →</a>
-        </div>
-      </article>`;
-    }
-
-    function initOssCarousel() {
-      const carousel = document.getElementById('oss-carousel');
-      const viewport = carousel && carousel.querySelector('.oss-viewport');
-      const track = document.getElementById('oss-track');
-      const prevBtn = document.getElementById('oss-prev');
-      const nextBtn = document.getElementById('oss-next');
-      const dotsEl = document.getElementById('oss-dots');
-      if (!carousel || !viewport || !track || !OSS_PROJECTS.length) return;
-
-      track.innerHTML = OSS_PROJECTS.map(renderOssCard).join('');
-      const n = OSS_PROJECTS.length;
-      let idx = 0;
-      let timer = null;
-      let cardW = 0, stepW = 0;
-
-      const visibleCount = () => window.matchMedia('(min-width: 640px)').matches ? 2 : 1;
-      const maxIdx = () => Math.max(0, n - visibleCount());
-
-      function measure() {
-        const V = viewport.clientWidth;
-        const gap = parseFloat(getComputedStyle(track).gap) || 0;
-        const vc = visibleCount();
-        // 像素对齐以避免子像素导致的右侧溢出
-        cardW = Math.floor((V - gap * (vc - 1)) / vc);
-        stepW = cardW + gap;
-        Array.from(track.children).forEach(c => { c.style.width = cardW + 'px'; });
-      }
-
-      function apply() {
-        measure();
-        const max = maxIdx();
-        if (idx > max) idx = 0;
-        if (idx < 0) idx = max;
-        track.style.transform = `translateX(${-idx * stepW}px)`;
-        renderDots(max);
-        const canMove = n > visibleCount();
-        prevBtn.style.display = canMove ? '' : 'none';
-        nextBtn.style.display = canMove ? '' : 'none';
-      }
-
-      function renderDots(max) {
-        const count = max + 1;
-        if (count <= 1) { dotsEl.innerHTML = ''; return; }
-        dotsEl.innerHTML = Array.from({ length: count }, (_, i) =>
-          `<button type="button" data-dot="${i}" aria-label="Go to slide ${i + 1}" class="oss-dot ${i === idx ? 'oss-dot-active bg-primary-light dark:bg-primary-dark' : 'bg-gray-300 dark:bg-slate-700 hover:bg-gray-400 dark:hover:bg-slate-600'}"></button>`
-        ).join('');
-      }
-
-      function goTo(i) {
-        const max = maxIdx();
-        const total = max + 1;
-        idx = ((i % total) + total) % total;
-        apply();
-      }
-
-      const nextSlide = () => goTo(idx + 1);
-      const prevSlide = () => goTo(idx - 1);
-
-      function startAuto() {
-        stopAuto();
-        if (n > visibleCount()) timer = setInterval(nextSlide, OSS_AUTO_MS);
-      }
-      function stopAuto() {
-        if (timer) { clearInterval(timer); timer = null; }
-      }
-
-      prevBtn.addEventListener('click', () => { prevSlide(); startAuto(); });
-      nextBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
-      dotsEl.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-dot]');
-        if (btn) { goTo(parseInt(btn.dataset.dot, 10)); startAuto(); }
-      });
-
-      carousel.addEventListener('mouseenter', stopAuto);
-      carousel.addEventListener('mouseleave', startAuto);
-      carousel.addEventListener('focusin', stopAuto);
-      carousel.addEventListener('focusout', startAuto);
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopAuto(); else startAuto();
-      });
-
-      window.addEventListener('resize', apply);
-
-      apply();
-      startAuto();
-      fetchRepoStars(track);
-    }
-
-    // 拉取 GitHub 真实 star 数；使用 localStorage + 6 小时 TTL 避开速率限制
-    const STARS_TTL_MS = 6 * 60 * 60 * 1000;
-    function fetchRepoStars(scope) {
-      const root = scope || document;
-      const fmt = n => n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n);
-      root.querySelectorAll('[data-repo]').forEach(async (el) => {
-        if (el.dataset.starLoaded === '1') return;
-        const repo = el.dataset.repo;
-        const out = el.querySelector('.star-count');
-        if (!out) return;
-        const cacheKey = 'gh-stars:' + repo;
-        try {
-          const raw = localStorage.getItem(cacheKey);
-          if (raw) {
-            const { count, ts } = JSON.parse(raw);
-            if (Date.now() - ts < STARS_TTL_MS) {
-              out.textContent = fmt(count);
-              el.dataset.starLoaded = '1';
-              return;
-            }
-          }
-        } catch (_) {}
-        try {
-          const res = await fetch(`https://img.shields.io/github/stars/${repo}.json`);
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const data = await res.json();
-          const count = parseInt(String(data.value ?? data.message ?? '0').replace(/[^\d]/g, ''), 10) || 0;
-          try { localStorage.setItem(cacheKey, JSON.stringify({ count, ts: Date.now() })); } catch (_) {}
-          out.textContent = fmt(count);
-          el.dataset.starLoaded = '1';
-        } catch (e) {
-          out.textContent = '—';
-          console.warn('[stars] fetch failed for', repo, e);
+      function setLanguage(lang, persist) {
+        const selected = lang === "zh-CN" ? "zh-CN" : "en";
+        document.documentElement.lang = selected;
+        document.title = PAGE_META[selected].title;
+        document.querySelector('meta[name="description"]').content =
+          PAGE_META[selected].description;
+        if (persist) {
+          try {
+            localStorage.setItem("portfolio-language", selected);
+          } catch (_) {}
         }
+      }
+
+      function toggleLanguage() {
+        setLanguage(
+          document.documentElement.lang === "zh-CN" ? "en" : "zh-CN",
+          true,
+        );
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let savedLanguage;
+        try {
+          savedLanguage = localStorage.getItem("portfolio-language");
+        } catch (_) {}
+        const browserLanguage =
+          navigator.language || navigator.userLanguage || "";
+        setLanguage(
+          savedLanguage ||
+            (browserLanguage.toLowerCase().includes("zh") ? "zh-CN" : "en"),
+          false,
+        );
       });
-    }
-
-    function toggleLanguage() {
-      const htmlElement = document.documentElement;
-      htmlElement.lang = htmlElement.lang === 'zh-CN' ? 'en' : 'zh-CN';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const userLang = navigator.language || navigator.userLanguage;
-      document.documentElement.lang = userLang && userLang.toLowerCase().includes('zh') ? 'zh-CN' : 'en';
-
-      initOssCarousel();
-      fetchRepoStars(); // 覆盖 Task Flyout 等静态卡片
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
