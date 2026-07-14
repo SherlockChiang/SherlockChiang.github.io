@@ -333,120 +333,123 @@
               </div>
             </article>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            <div class="flex items-end justify-between gap-4 mb-4">
+              <div>
+                <p class="zh text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  Star 数量最多的三个项目
+                </p>
+                <p class="en text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  Top three projects by stars
+                </p>
+              </div>
+              <div class="flex gap-2" aria-label="Project carousel controls">
+                <button id="oss-prev" type="button" aria-label="Previous projects" class="w-9 h-9 rounded-full border border-gray-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-primary-light hover:text-primary-light disabled:opacity-30 disabled:cursor-not-allowed transition-colors">←</button>
+                <button id="oss-next" type="button" aria-label="Next projects" class="w-9 h-9 rounded-full border border-gray-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-primary-light hover:text-primary-light disabled:opacity-30 disabled:cursor-not-allowed transition-colors">→</button>
+              </div>
+            </div>
+            <div id="oss-carousel" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Most starred open-source projects" tabindex="0">
               <article
-                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col"
+                class="snap-start shrink-0 basis-full sm:basis-[calc((100%-1.5rem)/2)] bg-white dark:bg-slate-900 rounded-xl border border-gray-100 dark:border-slate-800 p-6 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300"
               >
-                <h3
-                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
-                >
-                  Nethunter for KernelSU
-                </h3>
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100">Nethunter for KernelSU</h3>
+                  <span class="shrink-0 text-xs font-semibold text-amber-600 dark:text-amber-400">★ 47</span>
+                </div>
                 <p
-                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  为 KernelSU 环境适配 Kali NetHunter 安装流程，处理 Android
-                  Root 环境下的安装与兼容性问题。
+                  为 KernelSU 环境适配 Kali NetHunter，更新安装脚本与依赖，并为
+                  Android ARM64 设备提供固件及 USB 工具支持。
                 </p>
                 <p
-                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  Adapted the Kali NetHunter installation workflow for KernelSU,
-                  addressing installation and compatibility in rooted Android
-                  environments.
+                  Adapted Kali NetHunter for KernelSU with updated installers,
+                  dependencies, firmware, and USB tooling for Android ARM64 devices.
                 </p>
                 <div
                   class="flex flex-wrap items-center justify-between gap-3 text-xs"
                 >
-                  <span class="text-gray-500 dark:text-gray-400"
-                    >Shell · 46 Stars · 7 Forks</span
-                  >
+                  <span class="text-gray-500 dark:text-gray-400">Shell · 7 Forks</span>
                   <a
                     href="https://github.com/SherlockChiang/Nethunter_for_KernelSU"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    class="text-primary-light dark:text-primary-dark font-semibold hover:underline"
                     >GitHub →</a
                   >
                 </div>
               </article>
               <article
-                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col"
+                class="snap-start shrink-0 basis-full sm:basis-[calc((100%-1.5rem)/2)] bg-white dark:bg-slate-900 rounded-xl border border-gray-100 dark:border-slate-800 p-6 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300"
               >
-                <h3
-                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
-                >
-                  Maodie Launcher
-                </h3>
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100">Maodie Launcher</h3>
+                  <span class="shrink-0 text-xs font-semibold text-amber-600 dark:text-amber-400">★ 7</span>
+                </div>
                 <p
-                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  面向 Magisk 与 KernelSU 的轻量级 mihomo 系统 TUN 模块，实现
-                  Android 系统级透明代理。
+                  面向 Magisk、KernelSU 与 APatch 的 mihomo 系统 TUN 模块，提供
+                  Android 透明代理、现代网络栈及内置 WebUI。
                 </p>
                 <p
-                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  Built a lightweight mihomo system-TUN module for Magisk and
-                  KernelSU, providing system-wide transparent proxying on
-                  Android.
+                  A mihomo system-TUN module for Magisk, KernelSU, and APatch,
+                  featuring transparent proxying, a modern network stack, and WebUI.
                 </p>
                 <div
                   class="flex flex-wrap items-center justify-between gap-3 text-xs"
                 >
-                  <span class="text-gray-500 dark:text-gray-400"
-                    >Shell · 7 Stars · 1 Fork</span
-                  >
+                  <span class="text-gray-500 dark:text-gray-400">Shell · 1 Fork</span>
                   <a
                     href="https://github.com/SherlockChiang/Maodie-Launcher"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    class="text-primary-light dark:text-primary-dark font-semibold hover:underline"
                     >GitHub →</a
                   >
                 </div>
               </article>
               <article
-                class="border-t border-gray-200 dark:border-slate-800 pt-5 flex flex-col sm:col-span-2"
+                class="snap-start shrink-0 basis-full sm:basis-[calc((100%-1.5rem)/2)] bg-white dark:bg-slate-900 rounded-xl border border-gray-100 dark:border-slate-800 p-6 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300"
               >
-                <h3
-                  class="text-lg font-bold text-slate-800 dark:text-gray-100 mb-2"
-                >
-                  Bili Video History Record
-                </h3>
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100">Timeline Unlocker</h3>
+                  <span class="shrink-0 text-xs font-semibold text-amber-600 dark:text-amber-400">★ 5</span>
+                </div>
                 <p
-                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  为科研数据采集开发的 Python 工具，用于提取并整理研究参与者的
-                  Bilibili 视频浏览记录与标签。
+                  通过 LSPosed 为 Google 服务模拟运营商区域，从而启用受区域限制的
+                  Google 地图时间轴，并补偿中国地图坐标偏移。
                 </p>
                 <p
-                  class="en text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow"
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
                 >
-                  Developed a Python research utility to extract and organize
-                  participants' Bilibili viewing histories and video tags.
+                  An LSPosed module that unlocks Google Maps Timeline by spoofing
+                  carrier regions, with coordinate-offset compensation for China.
                 </p>
                 <div
                   class="flex flex-wrap items-center justify-between gap-3 text-xs"
                 >
-                  <span class="text-gray-500 dark:text-gray-400"
-                    >Python · 2 Stars</span
-                  >
+                  <span class="text-gray-500 dark:text-gray-400">Java · 0 Forks</span>
                   <a
-                    href="https://github.com/SherlockChiang/Bili_Video_History_Record"
+                    href="https://github.com/SherlockChiang/ReLocationReportEnabler"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-primary-light dark:text-primary-dark font-semibold"
+                    class="text-primary-light dark:text-primary-dark font-semibold hover:underline"
                     >GitHub →</a
                   >
                 </div>
               </article>
             </div>
             <p class="zh mt-5 text-xs text-gray-500 dark:text-gray-400">
-              公开 GitHub 指标核验于 2026 年 7 月 11 日。
+              公开 GitHub 指标核验于 2026 年 7 月 14 日；不含 Fork 项目。
             </p>
             <p class="en mt-5 text-xs text-gray-500 dark:text-gray-400">
-              Public GitHub metrics verified on July 11, 2026.
+              Public GitHub metrics verified on July 14, 2026; forks excluded.
             </p>
           </section>
 
@@ -842,6 +845,33 @@
             (browserLanguage.toLowerCase().includes("zh") ? "zh-CN" : "en"),
           false,
         );
+
+        const carousel = document.getElementById("oss-carousel");
+        const previousButton = document.getElementById("oss-prev");
+        const nextButton = document.getElementById("oss-next");
+
+        function updateCarouselControls() {
+          const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+          previousButton.disabled = carousel.scrollLeft <= 1;
+          nextButton.disabled = carousel.scrollLeft >= maxScroll - 1;
+        }
+
+        function moveCarousel(direction) {
+          const card = carousel.querySelector("article");
+          const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+          carousel.scrollBy({
+            left: direction * (card.getBoundingClientRect().width + gap),
+            behavior: "smooth",
+          });
+        }
+
+        previousButton.addEventListener("click", () => moveCarousel(-1));
+        nextButton.addEventListener("click", () => moveCarousel(1));
+        carousel.addEventListener("scroll", updateCarouselControls, {
+          passive: true,
+        });
+        window.addEventListener("resize", updateCarouselControls);
+        updateCarouselControls();
       });
     </script>
   </body>
