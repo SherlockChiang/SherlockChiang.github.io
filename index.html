@@ -840,6 +840,8 @@
         const reduceMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         );
+        const cards = [...carousel.querySelectorAll("article")];
+        let currentIndex = 0;
         let autoScrollTimer;
         let resumeTimer;
 
@@ -868,20 +870,16 @@
           );
         }
 
-        function cardStep() {
-          const card = carousel.querySelector("article");
-          const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
-          return card.getBoundingClientRect().width + gap;
+        function visibleCardCount() {
+          return window.matchMedia("(min-width: 640px)").matches ? 2 : 1;
         }
 
-        function moveCarousel(direction, wrap = false) {
-          const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-          let target = carousel.scrollLeft + direction * cardStep();
-          if (wrap && direction > 0 && target > maxScroll + 1) target = 0;
-          if (wrap && direction < 0 && target < -1) target = maxScroll;
+        function showCard(index) {
+          const lastIndex = Math.max(0, cards.length - visibleCardCount());
+          currentIndex = index < 0 ? lastIndex : index > lastIndex ? 0 : index;
           carousel.scrollTo({
-            left: Math.max(0, Math.min(target, maxScroll)),
-            behavior: "smooth",
+            left: cards[currentIndex].offsetLeft - carousel.offsetLeft,
+            behavior: reduceMotion.matches ? "auto" : "smooth",
           });
         }
 
@@ -893,7 +891,7 @@
         function startAutoScroll() {
           stopAutoScroll();
           if (reduceMotion.matches || document.hidden) return;
-          autoScrollTimer = setInterval(() => moveCarousel(1, true), 5000);
+          autoScrollTimer = setInterval(() => showCard(currentIndex + 1), 5000);
         }
 
         function pauseThenResume() {
@@ -902,22 +900,27 @@
         }
 
         previousButton.addEventListener("click", () => {
-          moveCarousel(-1, true);
+          showCard(currentIndex - 1);
           pauseThenResume();
         });
         nextButton.addEventListener("click", () => {
-          moveCarousel(1, true);
+          showCard(currentIndex + 1);
           pauseThenResume();
         });
-        carouselFrame.addEventListener("mouseenter", stopAutoScroll);
-        carouselFrame.addEventListener("mouseleave", startAutoScroll);
         carouselFrame.addEventListener("focusin", stopAutoScroll);
-        carouselFrame.addEventListener("focusout", startAutoScroll);
+        carouselFrame.addEventListener("focusout", (event) => {
+          if (!carouselFrame.contains(event.relatedTarget)) pauseThenResume();
+        });
         carousel.addEventListener("pointerdown", pauseThenResume, {
           passive: true,
         });
+        new ResizeObserver(() => showCard(currentIndex)).observe(carousel);
         document.addEventListener("visibilitychange", startAutoScroll);
-        reduceMotion.addEventListener("change", startAutoScroll);
+        if (reduceMotion.addEventListener) {
+          reduceMotion.addEventListener("change", startAutoScroll);
+        } else {
+          reduceMotion.addListener(startAutoScroll);
+        }
         refreshGitHubStars();
         startAutoScroll();
       });
