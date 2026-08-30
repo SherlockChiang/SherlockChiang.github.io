@@ -254,84 +254,179 @@
               Featured Projects
             </h2>
 
-            <article
-              class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-xl hover:border-primary-light/20 dark:hover:border-primary-dark/20 transition-all duration-300 group overflow-hidden mb-8"
-            >
-              <img
-                src="https://raw.githubusercontent.com/SherlockChiang/Task-Flyout/refs/heads/master/docs/poster.png"
-                alt="Task Flyout application preview"
-                width="1200"
-                height="400"
-                loading="lazy"
-                decoding="async"
-                onerror="this.hidden = true"
-                class="w-full aspect-[3/1] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div class="p-8 flex-grow flex flex-col">
-                <div class="flex items-center gap-4 mb-4">
+            <div id="oss-hero-frame" class="relative">
+              <button id="oss-hero-prev" type="button" aria-label="Previous featured project" class="absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 shadow-md text-slate-700 dark:text-slate-200 hover:border-primary-light hover:text-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light transition-colors">←</button>
+              <div
+                id="oss-hero-carousel"
+                class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth py-3 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                aria-label="Featured projects"
+                aria-live="off"
+                tabindex="0"
+              >
+              <article
+                class="snap-start shrink-0 basis-full bg-white dark:bg-slate-900 rounded-xl shadow-md border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-xl hover:border-primary-light/20 dark:hover:border-primary-dark/20 transition-all duration-300 group overflow-hidden"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/SherlockChiang/Task-Flyout/refs/heads/master/docs/poster.png"
+                  alt="Task Flyout application preview"
+                  width="1200"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.hidden = true"
+                  class="w-full aspect-[3/1] object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="p-8 flex-grow flex flex-col">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div
+                      class="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-primary-light dark:text-primary-dark text-xl font-bold shrink-0"
+                    >
+                      TF
+                    </div>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-gray-100"
+                    >
+                      Task Flyout
+                    </h3>
+                  </div>
+                  <p
+                    class="zh text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                  >
+                    面向 Windows 的原生任务管理客户端，整合 Google Tasks 与
+                    Microsoft To Do，并提供跨服务同步和系统级集成。
+                  </p>
+                  <p
+                    class="en text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                  >
+                    Built a native Windows task-management client integrating
+                    Google Tasks and Microsoft To Do, with cross-service
+                    synchronization and native system integration.
+                  </p>
+
                   <div
-                    class="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-primary-light dark:text-primary-dark text-xl font-bold shrink-0"
+                    class="flex flex-wrap gap-x-4 gap-y-2 mb-5 text-xs font-medium text-gray-500 dark:text-gray-400"
                   >
-                    TF
-                  </div>
-                  <h3
-                    class="text-2xl font-bold text-slate-900 dark:text-gray-100"
-                  >
-                    Task Flyout
-                  </h3>
-                </div>
-                <p
-                  class="zh text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
-                >
-                  面向 Windows 的原生任务管理客户端，整合 Google Tasks 与
-                  Microsoft To Do，并提供跨服务同步和系统级集成。
-                </p>
-                <p
-                  class="en text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
-                >
-                  Built a native Windows task-management client integrating
-                  Google Tasks and Microsoft To Do, with cross-service
-                  synchronization and native system integration.
-                </p>
-
-                <div
-                  class="flex flex-wrap gap-x-4 gap-y-2 mb-5 text-xs font-medium text-gray-500 dark:text-gray-400"
-                >
-                  <span class="inline-flex items-center gap-1.5"
-                    ><svg
-                      aria-hidden="true"
-                      class="w-4 h-4 text-amber-500"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
+                    <span class="inline-flex items-center gap-1.5"
+                      ><svg
+                        aria-hidden="true"
+                        class="w-4 h-4 text-amber-500"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="m12 2 2.8 6.6 7.2.6-5.5 4.7 1.7 7.1-6.2-3.7L5.8 21l1.7-7.1L2 9.2l7.2-.6L12 2Z"
+                        /></svg
+                      >2 Stars</span
                     >
-                      <path
-                        d="m12 2 2.8 6.6 7.2.6-5.5 4.7 1.7 7.1-6.2-3.7L5.8 21l1.7-7.1L2 9.2l7.2-.6L12 2Z"
-                      /></svg
-                    >2 Stars</span
-                  >
-                  <span>v1.2.11 Release</span>
-                  <span>Windows x64</span>
-                </div>
+                    <span>v1.2.11 Release</span>
+                    <span>Windows x64</span>
+                  </div>
 
-                <div
-                  class="flex flex-wrap justify-between items-center gap-3 mt-auto pt-2"
-                >
-                  <div class="flex flex-wrap items-center gap-2">
-                    <span
-                      class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded"
-                      >C#</span
+                  <div
+                    class="flex flex-wrap justify-between items-center gap-3 mt-auto pt-2"
+                  >
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span
+                        class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded"
+                        >C#</span
+                      >
+                    </div>
+                    <a
+                      href="https://github.com/SherlockChiang/Task-Flyout"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-primary-light dark:text-primary-dark font-semibold group-hover:underline"
+                      >GitHub →</a
                     >
                   </div>
-                  <a
-                    href="https://github.com/SherlockChiang/Task-Flyout"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-primary-light dark:text-primary-dark font-semibold group-hover:underline"
-                    >GitHub →</a
-                  >
                 </div>
+              </article>
+
+              <article
+                class="snap-start shrink-0 basis-full bg-white dark:bg-slate-900 rounded-xl shadow-md border border-gray-100 dark:border-slate-800 flex flex-col hover:shadow-xl hover:border-primary-light/20 dark:hover:border-primary-dark/20 transition-all duration-300 group overflow-hidden"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/SherlockChiang/QuickLook.Next/main/docs/images/quicklook-next-hero.png"
+                  alt="QuickLook Next application preview"
+                  width="1200"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.hidden = true"
+                  class="w-full aspect-[3/1] object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="p-8 flex-grow flex flex-col">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div
+                      class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-600 dark:text-amber-400 text-xl font-bold shrink-0"
+                    >
+                      QL
+                    </div>
+                    <h3
+                      class="text-2xl font-bold text-slate-900 dark:text-gray-100"
+                    >
+                      QuickLook Next
+                    </h3>
+                  </div>
+                  <p
+                    class="zh text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                  >
+                    面向 Windows
+                    的快速文件预览工具，在资源管理器中选中文件按下空格即可即时预览；采用
+                    WinUI 3 界面与 Rust
+                    解析内核，并通过隔离的辅助进程兼顾流畅与安全。
+                  </p>
+                  <p
+                    class="en text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow"
+                  >
+                    A fast, native file previewer for Windows Explorer — select
+                    a file, press Space, and see it instantly. Built with a
+                    WinUI 3 interface and Rust-powered parsing, using isolated
+                    helper processes to stay responsive and safe.
+                  </p>
+
+                  <div
+                    class="flex flex-wrap gap-x-4 gap-y-2 mb-5 text-xs font-medium text-gray-500 dark:text-gray-400"
+                  >
+                    <span class="inline-flex items-center gap-1.5"
+                      ><svg
+                        aria-hidden="true"
+                        class="w-4 h-4 text-amber-500"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="m12 2 2.8 6.6 7.2.6-5.5 4.7 1.7 7.1-6.2-3.7L5.8 21l1.7-7.1L2 9.2l7.2-.6L12 2Z"
+                        /></svg
+                      >2 Stars</span
+                    >
+                    <span>v1.0.0 Release</span>
+                    <span>Microsoft Store</span>
+                    <span>Windows 10/11 x64</span>
+                  </div>
+
+                  <div
+                    class="flex flex-wrap justify-between items-center gap-3 mt-auto pt-2"
+                  >
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span
+                        class="px-2 py-1 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 text-xs font-mono rounded"
+                        >C#</span
+                      >
+                    </div>
+                    <a
+                      href="https://github.com/SherlockChiang/QuickLook.Next"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-primary-light dark:text-primary-dark font-semibold group-hover:underline"
+                      >GitHub →</a
+                    >
+                  </div>
+                </div>
+              </article>
               </div>
-            </article>
+              <button id="oss-hero-next" type="button" aria-label="Next featured project" class="absolute right-0 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 shadow-md text-slate-700 dark:text-slate-200 hover:border-primary-light hover:text-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light transition-colors">→</button>
+            </div>
 
             <div id="oss-carousel-frame" class="relative">
               <button id="oss-prev" type="button" aria-label="Previous projects" class="absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 shadow-md text-slate-700 dark:text-slate-200 hover:border-primary-light hover:text-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light transition-colors">←</button>
@@ -359,9 +454,44 @@
                 <div
                   class="flex flex-wrap items-center justify-between gap-3 text-xs"
                 >
-                  <span class="text-gray-500 dark:text-gray-400">Shell · 7 Forks</span>
+                  <span class="text-gray-500 dark:text-gray-400">Shell · 8 Forks</span>
                   <a
                     href="https://github.com/SherlockChiang/Nethunter_for_KernelSU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-light dark:text-primary-dark font-semibold hover:underline"
+                    >GitHub →</a
+                  >
+                </div>
+              </article>
+              <article
+                data-repo="MiPushSpoofNext"
+                class="snap-start shrink-0 basis-full sm:basis-[calc((100%-1.5rem)/2)] bg-white dark:bg-slate-900 rounded-xl border border-gray-100 dark:border-slate-800 p-6 flex flex-col hover:shadow-lg hover:border-primary-light/30 dark:hover:border-primary-dark/30 transition-all duration-300"
+              >
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <h3 class="text-lg font-bold text-slate-800 dark:text-gray-100">MiPushSpoofNext</h3>
+                  <span class="github-stars shrink-0 text-xs font-semibold text-amber-600 dark:text-amber-400" aria-label="Loading GitHub stars">★ …</span>
+                </div>
+                <p
+                  class="zh text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
+                >
+                  纯 Zygisk
+                  实现的小米推送适配模块，按进程虚拟化小米设备身份，让类原生
+                  Android 系统也能使用系统级 MiPush 推送通道。
+                </p>
+                <p
+                  class="en text-gray-600 dark:text-gray-400 text-sm mb-5 flex-grow leading-relaxed"
+                >
+                  A pure-Zygisk module that virtualizes the Xiaomi device
+                  identity per process, bringing the system-level MiPush push
+                  channel to AOSP-like Android ROMs.
+                </p>
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 text-xs"
+                >
+                  <span class="text-gray-500 dark:text-gray-400">C++ · 1 Fork</span>
+                  <a
+                    href="https://github.com/SherlockChiang/MiPushSpoofNext"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-primary-light dark:text-primary-dark font-semibold hover:underline"
@@ -425,7 +555,7 @@
                 <div
                   class="flex flex-wrap items-center justify-between gap-3 text-xs"
                 >
-                  <span class="text-gray-500 dark:text-gray-400">Java · 0 Forks</span>
+                  <span class="text-gray-500 dark:text-gray-400">Java · 1 Fork</span>
                   <a
                     href="https://github.com/SherlockChiang/ReLocationReportEnabler"
                     target="_blank"
@@ -738,7 +868,7 @@
 
               <div class="relative">
                 <div
-                  class="absolute w-3 h-3 bg-primary-light dark:bg-primary-dark rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"
+                  class="absolute w-3 h-3 bg-gray-300 dark:bg-slate-700 rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"
                 ></div>
                 <h3 class="zh font-bold text-slate-800 dark:text-gray-100">
                   研究助理 (RA)
@@ -772,6 +902,35 @@
                   class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono"
                 >
                   2025.6 - 2026.6
+                </p>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="absolute w-3 h-3 bg-primary-light dark:bg-primary-dark rounded-full -left-[23px] top-1.5 ring-4 ring-white dark:ring-slate-950"
+                ></div>
+                <h3 class="zh font-bold text-slate-800 dark:text-gray-100">
+                  心理学 - 博士
+                </h3>
+                <h3 class="en font-bold text-slate-800 dark:text-gray-100">
+                  Psychology - Ph.D.
+                </h3>
+                <p
+                  class="zh text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  香港浸会大学文学及社会科学院（FASS）健康及人类发展学部（WHD）
+                </p>
+                <p
+                  class="en text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium"
+                >
+                  Academy of Wellness and Human Development (WHD), Faculty of
+                  Arts and Social Sciences (FASS), HKBU
+                </p>
+                <p
+                  class="text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono"
+                >
+                  <span class="zh">2026.9 - 至今</span>
+                  <span class="en">2026.9 - Present</span>
                 </p>
               </div>
             </div>
@@ -833,20 +992,100 @@
           false,
         );
 
-        const carousel = document.getElementById("oss-carousel");
-        const carouselFrame = document.getElementById("oss-carousel-frame");
-        const previousButton = document.getElementById("oss-prev");
-        const nextButton = document.getElementById("oss-next");
-        const reduceMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        );
-        const cards = [...carousel.querySelectorAll("article")];
-        let currentIndex = 0;
-        let autoScrollTimer;
-        let resumeTimer;
+        function createCarousel({
+          carousel,
+          frame,
+          previousButton,
+          nextButton,
+          autoScroll = false,
+          interval = 5000,
+          visibleCount = () => 1,
+        }) {
+          const cards = [...carousel.querySelectorAll("article")];
+          const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          );
+          let currentIndex = 0;
+          let autoScrollTimer;
+          let resumeTimer;
+
+          function showCard(index) {
+            const lastIndex = Math.max(0, cards.length - visibleCount());
+            currentIndex = index < 0 ? lastIndex : index > lastIndex ? 0 : index;
+            carousel.scrollTo({
+              left: cards[currentIndex].offsetLeft - carousel.offsetLeft,
+              behavior: reduceMotion.matches ? "auto" : "smooth",
+            });
+          }
+
+          function stopAutoScroll() {
+            clearInterval(autoScrollTimer);
+            clearTimeout(resumeTimer);
+          }
+
+          function startAutoScroll() {
+            stopAutoScroll();
+            if (!autoScroll || reduceMotion.matches || document.hidden) return;
+            autoScrollTimer = setInterval(
+              () => showCard(currentIndex + 1),
+              interval,
+            );
+          }
+
+          function pauseThenResume() {
+            stopAutoScroll();
+            resumeTimer = setTimeout(startAutoScroll, 8000);
+          }
+
+          previousButton.addEventListener("click", () => {
+            showCard(currentIndex - 1);
+            if (autoScroll) pauseThenResume();
+          });
+          nextButton.addEventListener("click", () => {
+            showCard(currentIndex + 1);
+            if (autoScroll) pauseThenResume();
+          });
+          new ResizeObserver(() => showCard(currentIndex)).observe(carousel);
+          if (!autoScroll) return;
+
+          frame.addEventListener("focusin", stopAutoScroll);
+          frame.addEventListener("focusout", (event) => {
+            if (!frame.contains(event.relatedTarget)) pauseThenResume();
+          });
+          frame.addEventListener("mouseenter", stopAutoScroll);
+          frame.addEventListener("mouseleave", pauseThenResume);
+          carousel.addEventListener("pointerdown", pauseThenResume, {
+            passive: true,
+          });
+          document.addEventListener("visibilitychange", startAutoScroll);
+          if (reduceMotion.addEventListener) {
+            reduceMotion.addEventListener("change", startAutoScroll);
+          } else {
+            reduceMotion.addListener(startAutoScroll);
+          }
+          startAutoScroll();
+        }
+
+        createCarousel({
+          carousel: document.getElementById("oss-hero-carousel"),
+          frame: document.getElementById("oss-hero-frame"),
+          previousButton: document.getElementById("oss-hero-prev"),
+          nextButton: document.getElementById("oss-hero-next"),
+          autoScroll: true,
+        });
+        createCarousel({
+          carousel: document.getElementById("oss-carousel"),
+          frame: document.getElementById("oss-carousel-frame"),
+          previousButton: document.getElementById("oss-prev"),
+          nextButton: document.getElementById("oss-next"),
+          visibleCount: () =>
+            window.matchMedia("(min-width: 640px)").matches ? 2 : 1,
+        });
 
         async function refreshGitHubStars() {
-          const cards = [...carousel.querySelectorAll("[data-repo]")];
+          const cards = [
+            ...document.querySelectorAll("#oss-carousel [data-repo]"),
+          ];
           await Promise.all(
             cards.map(async (card) => {
               const stars = card.querySelector(".github-stars");
@@ -870,59 +1109,7 @@
           );
         }
 
-        function visibleCardCount() {
-          return window.matchMedia("(min-width: 640px)").matches ? 2 : 1;
-        }
-
-        function showCard(index) {
-          const lastIndex = Math.max(0, cards.length - visibleCardCount());
-          currentIndex = index < 0 ? lastIndex : index > lastIndex ? 0 : index;
-          carousel.scrollTo({
-            left: cards[currentIndex].offsetLeft - carousel.offsetLeft,
-            behavior: reduceMotion.matches ? "auto" : "smooth",
-          });
-        }
-
-        function stopAutoScroll() {
-          clearInterval(autoScrollTimer);
-          clearTimeout(resumeTimer);
-        }
-
-        function startAutoScroll() {
-          stopAutoScroll();
-          if (reduceMotion.matches || document.hidden) return;
-          autoScrollTimer = setInterval(() => showCard(currentIndex + 1), 5000);
-        }
-
-        function pauseThenResume() {
-          stopAutoScroll();
-          resumeTimer = setTimeout(startAutoScroll, 8000);
-        }
-
-        previousButton.addEventListener("click", () => {
-          showCard(currentIndex - 1);
-          pauseThenResume();
-        });
-        nextButton.addEventListener("click", () => {
-          showCard(currentIndex + 1);
-          pauseThenResume();
-        });
-        carouselFrame.addEventListener("focusin", stopAutoScroll);
-        carouselFrame.addEventListener("focusout", (event) => {
-          if (!carouselFrame.contains(event.relatedTarget)) pauseThenResume();
-        });
-        carousel.addEventListener("pointerdown", pauseThenResume, {
-          passive: true,
-        });
-        new ResizeObserver(() => showCard(currentIndex)).observe(carousel);
-        document.addEventListener("visibilitychange", startAutoScroll);
-        if (reduceMotion.addEventListener) {
-          reduceMotion.addEventListener("change", startAutoScroll);
-        } else {
-          reduceMotion.addListener(startAutoScroll);
-        }
         refreshGitHubStars();
-        startAutoScroll();
       });
     </script>
   </body>
